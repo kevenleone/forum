@@ -33,7 +33,7 @@ const {
 } = process.env;
 
 export default {
-  APP_NAME: APP_NAME || 'Graphscript',
+  APP_NAME: APP_NAME || 'Forum',
   AUTH_MIDDLEWARE_ENABLED: normalizeBool(AUTH_MIDDLEWARE_ENABLED, false),
   CONSTANTS,
   ENVIRONMENT: NODE_ENV || 'development',

@@ -1,0 +1,11 @@
+{
+  "name": "@monorepo/i18n",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+   "scripts": {
+     "build": "tsc",
+     "build-types": "npx typescript src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir types"
+   }
+}

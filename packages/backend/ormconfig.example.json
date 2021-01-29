@@ -6,7 +6,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "root",
-    "database": "graphscript",
+    "database": "forum",
     "synchronize": true,
     "logging": false,
     "entities": ["./src/entity/*.ts"]
@@ -14,7 +14,7 @@
   {
     "name": "test",
     "type": "sqlite",
-    "database": "graphscript.sqlite",
+    "database": "forum.sqlite",
     "dropSchema": true,
     "synchronize": true,
     "logging": true,
@@ -27,7 +27,7 @@
     "port": 5432,
     "username": "postgres",
     "password": "root",
-    "database": "graphscript",
+    "database": "forum",
     "synchronize": true,
     "logging": false,
     "entities": ["./src/entity/*.js"]
