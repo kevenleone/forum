@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 
-import Layout from '../components/Page';
+import Layout from '../components/Layout/Page';
 import GlobalStyle, { theme } from '../styles/globalStyles';
 import { Page } from '../styles/page';
 

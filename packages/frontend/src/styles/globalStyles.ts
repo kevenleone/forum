@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
-
   body {
     margin: 0;
     padding: 0;
@@ -12,8 +10,12 @@ export default createGlobalStyle`
     color: #5A5A5A;
   }
 
-  p, a, span {
-    font-size: 14px;
+  p, a, span, time {
+    font-size: 13px;
+  }
+
+  strong {
+    color: #000;
   }
 
   h5 {

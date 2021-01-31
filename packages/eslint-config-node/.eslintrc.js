@@ -31,7 +31,8 @@ module.exports = {
     "sort-keys-fix/sort-keys-fix": "warn",
     "no-explicit-any": "off",
     "camelcase": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "react/react-in-jsx-scope": "off"
   },
   settings: {
     'import/resolver': {

@@ -9,6 +9,15 @@ const Container = styled.div`
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.03);
 `;
 
+const Icon = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  width: 36px;
+`;
+
 const Header = styled.div`
   padding: 15px;
   background-color: #455a64;
@@ -33,12 +42,30 @@ const Post = styled.li`
 
   div:first-child {
     flex-grow: unset;
-    flex-basis: 50px;
+    flex-basis: 40px;
+  }
+
+  div:nth-child(3) {
+    flex-grow: unset;
+    flex-basis: 80px;
   }
 
   div:nth-child(2) {
     padding: 0 10px;
     flex: 4;
+  }
+
+  :hover {
+    ${Icon} {
+      transition: background-color 0.18s linear,
+        box-shadow 0.18s cubic-bezier(0.6, 0, 0.1, 1);
+      background-color: #1976d2;
+      border-radius: 5px;
+
+      svg {
+        color: white;
+      }
+    }
   }
 `;
 
@@ -61,11 +88,11 @@ export default function index() {
       </Header>
       <Posts>
         <Post>
-          <div>
+          <Icon>
             <FaComment />
-          </div>
+          </Icon>
           <div>
-            <h4>Informations</h4>
+            <Link href="/category/informations">Informations</Link>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -76,28 +103,6 @@ export default function index() {
           <div>
             <p>1 Topics</p>
             <p>1 Posts</p>
-          </div>
-          <div>
-            <p>
-              <Link href="/">Welcome to ReactJS</Link>
-            </p>
-            <p>
-              by: <Link href="/">ADMIN</Link>
-            </p>
-            <time dateTime="">24 February 2019, 3:16</time>
-          </div>
-        </Post>
-        <Post>
-          <div>
-            <FaComment />
-          </div>
-          <div>
-            <h4>Informations</h4>
-            <p>Placeholder Forum</p>
-          </div>
-          <div>
-            <p>1 Topics</p>
-            <p>123 Posts</p>
           </div>
           <div>
             <p>
