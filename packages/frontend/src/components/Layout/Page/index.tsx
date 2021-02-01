@@ -7,12 +7,13 @@ import Footer from '../Footer';
 import Sidebar from '../Sidebar';
 
 const Content = styled.div`
-  padding: 60px;
+  padding: 20px 0;
   display: flex;
 `;
 
 const Container = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 export default function index({ children }) {
