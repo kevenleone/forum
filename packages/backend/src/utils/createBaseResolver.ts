@@ -23,6 +23,7 @@ export function createBaseResolver<classType extends ClassType>(
   entity: any,
   returnType: classType,
   inputTypes: { create: classType; update: classType; filter?: classType },
+  relations: string[] = [],
   middlewares?: MiddlewareBaseResolver,
 ): any {
   @Resolver({ isAbstract: true })
@@ -30,7 +31,7 @@ export function createBaseResolver<classType extends ClassType>(
     @UseMiddleware(isAuth)
     @Query(() => [returnType], { name: `getAll${suffix}` })
     async getAll(): Promise<ClassType[]> {
-      return entity.find();
+      return entity.find({ relations });
     }
 
     @UseMiddleware(isAuth)

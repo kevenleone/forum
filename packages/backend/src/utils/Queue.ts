@@ -1,11 +1,22 @@
-import { JobsOptions, Queue, QueueScheduler, Worker } from 'bullmq';
+import {
+  JobsOptions,
+  Queue,
+  QueueOptions,
+  QueueScheduler,
+  RedisOptions,
+  Worker,
+} from 'bullmq';
 
 import * as Jobs from '../jobs';
-import { constants, defaults, logger } from '../utils/globalMethods';
-const { REDIS_URL } = defaults;
+import { constants, logger } from '../utils/globalMethods';
 
-const redisOptions = {
-  host: REDIS_URL,
+const redisOptions: RedisOptions = {
+  host: 'localhost',
+  port: 6379,
+};
+
+const options: QueueOptions | WorkerOptions = {
+  connection: { ...redisOptions },
 };
 
 const getQueueData = (job: any) => {
@@ -15,13 +26,14 @@ const getQueueData = (job: any) => {
     data,
     handle,
     name,
+    queued = false,
     selfRegister = false,
   }: any = job;
-  const bull = new Queue(name, { connection: { ...redisOptions } });
+  const bull = new Queue(name, options);
 
-  if (selfRegister && active) {
+  if (selfRegister || (queued && active)) {
     // eslint-disable-next-line no-new
-    new QueueScheduler(name);
+    new QueueScheduler(name, options);
     bull.add(name, data, config);
   }
 
@@ -68,7 +80,7 @@ export default {
     for (const queue of this.queues) {
       const { active, name } = queue;
       if (active) {
-        const worker = new Worker(name, queue.handle);
+        const worker = new Worker(name, queue.handle, options as any);
 
         worker.on('completed', () => {
           logger.info(`[${name}] | [COMPLETED]`);

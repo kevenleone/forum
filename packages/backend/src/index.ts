@@ -1,13 +1,12 @@
 import 'reflect-metadata';
 
 import { ApolloServer, Config } from 'apollo-server-express';
-import { router as BullRouter, setQueues } from 'bull-board';
+import { router as BullRouter } from 'bull-board';
 import { config } from 'dotenv';
 import Express from 'express';
 
 import createSchema from './utils/createSchema';
 import { defaults, logger } from './utils/globalMethods';
-import Queue from './utils/Queue';
 import { createTypeormConn } from './utils/typeORMConn';
 
 (async (): Promise<void> => {
@@ -17,8 +16,6 @@ import { createTypeormConn } from './utils/typeORMConn';
   const httpPort = PORT || 3333;
 
   logger.debug(`Starting ${APP_NAME} Server`);
-
-  setQueues(Queue.queues.map((queue) => queue.bull));
 
   await createTypeormConn();
 

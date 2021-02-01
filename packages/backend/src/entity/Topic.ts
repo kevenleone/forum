@@ -4,40 +4,38 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  Index,
+  ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+import { Board } from './Board';
+
 @ObjectType()
 @Entity()
-export class User extends BaseEntity {
+export class Topic extends BaseEntity {
   @Field(() => ID)
   @PrimaryColumn({ generated: 'uuid' })
   id: string;
 
   @Field()
   @Column()
-  firstName: string;
+  name: string;
 
   @Field()
   @Column()
-  lastName: string;
-
-  @Field()
-  fullName(): string {
-    const { firstName, lastName } = this;
-    return `${firstName} ${lastName}`;
-  }
+  slug: string;
 
   @Field()
   @Column()
-  @Index({ unique: true })
-  email: string;
+  icon: string;
 
   @Field()
   @Column()
-  password: string;
+  description: string;
+
+  @ManyToOne(() => Board, (board) => board.topics)
+  board: Board;
 
   @Field()
   @CreateDateColumn()

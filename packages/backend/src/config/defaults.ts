@@ -36,7 +36,7 @@ export default {
   APP_NAME: APP_NAME || 'Forum',
   AUTH_MIDDLEWARE_ENABLED: normalizeBool(AUTH_MIDDLEWARE_ENABLED, false),
   CONSTANTS,
-  ENVIRONMENT: NODE_ENV || 'development',
+  ENVIRONMENT: NODE_ENV || 'default',
   JWT_SECRET: JWT_SECRET || 'MY_SECRET_SECRET',
   MAIL_FROM: MAIL_FROM || '',
   MAIL_HOST: MAIL_HOST || '',
